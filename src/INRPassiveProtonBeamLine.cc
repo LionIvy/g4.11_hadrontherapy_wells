@@ -109,13 +109,13 @@ G4VPhysicalVolume* INRPassiveProtonBeamLine::Construct()
 // ----------------------------------------------------------
 
 
-void INRPassiveProtonBeamLine::ConstructSDandField(){
+//void INRPassiveProtonBeamLine::ConstructSDandField(){
 
-    PhaseSpace_SD *sensDet = new PhaseSpace_SD("PhaseSpaceLV");
-    phaseSpace_ScoringVolume ->SetSensitiveDetector(sensDet);
+//    PhaseSpace_SD *sensDet = new PhaseSpace_SD("PhaseSpaceLV");
+//    phaseSpace_ScoringVolume ->SetSensitiveDetector(sensDet);
 
 
-}
+//}
 
 /////////////////////////////////////////////////////////////////////////////
 void INRPassiveProtonBeamLine::SetDefaultDimensions()
