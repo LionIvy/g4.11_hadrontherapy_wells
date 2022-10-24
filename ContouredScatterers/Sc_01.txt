@@ -1,0 +1,41 @@
+Cu
+NumberOfSteps   23
+#       Radius       Height
+Step1     8.50		0.1
+Step2     9.36		0.1
+Step3    10.11		0.1
+Step4    10.80		0.1
+Step5    11.48		0.1
+Step6    12.17		0.1
+Step7    12.89		0.1
+Step8    13.64		0.1
+Step9    14.42		0.1
+Step10   15.22		0.1
+Step11   16.01		0.1
+Step12   16.80		0.1
+Step13   17.55		0.1
+Step14   18.26		0.1
+Step15   18.93 		0.1
+Step16   19.55 		0.1
+Step17   20.14		0.1
+Step18   20.73 		0.1
+Step19   21.37 		0.1
+Step20   22.10 		0.1
+Step21   23.01 		0.1
+Step22   24.20		0.1
+Step23   25.81 		0.1
+PMMA
+NumberOfSteps   10
+BoxWidth        45
+BottomLayer=    0.005
+#       Radius       Height
+Step1     2.69	       0.27
+Step2     5.38	       0.78
+Step3     8.07	       1.22
+Step4     10.76	       1.61
+Step5     13.45	       1.84
+Step6     16.14	       2.00
+Step7     18.83	       2.04
+Step8     21.52	       1.93
+Step9     24.21	       1.74
+Step10    26.90	       0.7

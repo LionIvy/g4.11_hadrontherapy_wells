@@ -1,0 +1,185 @@
+#########################
+# Set of the verboses
+#
+/control/verbose 0
+/tracking/verbose 0
+/run/verbose 0
+/event/verbose 0
+
+##########################
+# Set of the physic models
+#
+/Physics/addPhysics HADRONTHERAPY_1
+/run/numberOfThreads 7
+
+
+######## Geometry selection #######
+/geometrySetup/selectGeometry INRBeamLine
+
+##########################
+# Initialisation procedure
+#
+/run/initialize
+
+##########################
+# Visualisation
+#
+#/control/execute macro/vis.mac
+
+
+
+####################################################
+# Set here GEOMETRY ELEMENTS.
+#
+#
+
+#/RidgeFilter/ReadData RidgeFilters/RF_209MeV_5.0cm.txt
+/RidgeFilter/angle 180 deg
+
+
+####################################################
+# Set here the CUT and the STEP MAX for the tracking.
+# Suggested values of cut and step
+#
+# Set cuts OUTSIDE the detector
+#
+/run/setCut 1 mm
+
+# Set cuts ONLY inside the detector
+#
+/run/setCutForRegion DetectorLog 0.1 mm
+
+/Step/waterPhantomStepMax 0.1 mm
+
+#########################
+# Set the primary particle type,
+# energy and position along the X direction
+#
+
+#---------------------------gps-----------------
+/gps/pos/shape Circle
+# /gps/pos/centre -600. 0. 0. cm
+/gps/pos/centre -412. 0. 0. cm
+/gps/pos/radius  5.0 mm
+/gps/pos/sigma_r 0.5 mm
+/gps/particle proton
+/gps/pos/type Beam
+
+# the incident surface is in the y-z plane
+#
+/gps/pos/rot1 0 1 0
+/gps/pos/rot2 0 0 1
+
+# the beam is travelling along the x-axis without any angular dispersion (angular despersion set to 0.0)
+#
+
+/gps/ang/rot1 0 0 1
+/gps/ang/rot2 0 1 0
+/gps/ang/type beam1d
+/gps/ang/sigma_r 0.028 deg
+
+# the beam energy is in gaussian profile
+#
+/gps/ene/type Gauss
+/gps/ene/mono 160.0 MeV
+/gps/ene/sigma 0.25 MeV
+
+###################################################
+#		DETECTOR DESCRIPTION
+########################################################
+# USE THE FOLLOWING FOUR LINES FOR DEFINITION OF PHANTOM
+########################################################
+#
+#/changePhantom/position 20. 0. 0. cm
+#/changePhantom/update
+
+/changePhantom/size 43 40 40  cm
+#/changePhantom/position dist+(sizeX*0.5) 0 0 cm
+/changePhantom/position 257 0 0 cm
+/changePhantom/update
+###################################################
+# USE THE FOLLOWING FOR A VOXELLIZED DETECTOR
+###################################################
+#
+#/changeDetector/size 10 20 20 cm
+#/changeDetector/voxelSize 1.0 5.0 5.0 mm
+
+
+# Put the detector in the lower left corner of the phantom
+#
+#/changeDetector/displacement 19 10.0 10.0 cm
+
+/changeDetector/size 30 10 10 cm
+/changeDetector/voxelSize 1.0 1.0 1.0 mm
+/changeDetector/displacement 0. 15.0 15.0 cm
+
+
+/changePhantom/update
+
+#/vis/scene/add/line -3147.5 235  150 -3647.5 235  150 mm
+
+#/vis/scene/add/line -3147.5 235 -225 -3647.5 235 -225 mm
+#/vis/scene/add/line -3147.5 235  525 -3647.5 235  525 mm
+
+#/vis/scene/add/line -3147.5  225 -235 -3647.5  225 -235 mm
+#/vis/scene/add/line -3147.5 -225 -235 -3647.5 -225 -235 mm
+
+#/vis/viewer/set/targetPoint -3397.5 0 0 mm
+
+#/score/create/boxMesh nFluxTop
+#/score/mesh/boxSize 250. 1.0 375.0 mm
+#/score/mesh/nBin 50 1 75
+#/score/mesh/translate/xyz -3397.5 0 150.0 mm
+#/score/quantity/cellFlux cellFlux
+#/score/filter/particle neutronFilter neutron
+#/score/close
+
+#/score/create/boxMesh gFluxTop
+#/score/mesh/boxSize 250. 1.0 375.0 mm
+#/score/mesh/nBin 50 1 75
+#/score/mesh/translate/xyz -3397.5 0 150.0 mm
+#/score/quantity/cellFlux cellFlux
+#/score/filter/particle gammaFilter gamma
+#/score/close
+
+#/score/create/boxMesh nFluxLeft
+#/score/mesh/boxSize 250. 225.0 1.0 mm
+#/score/mesh/nBin 50 45 1
+#/score/mesh/translate/xyz -3397.5 0.0 -235.0 mm
+#/score/quantity/cellFlux cellFlux
+#/score/filter/particle neutronFilter neutron
+#/score/close
+
+#/score/create/boxMesh gFluxLeft
+#/score/mesh/boxSize 250. 225.0 1.0 mm
+#/score/mesh/nBin 50 45 1
+#/score/mesh/translate/xyz -3397.5 0.0 -235.0 mm
+#/score/quantity/cellFlux cellFlux
+#/score/filter/particle gammaFilter gamma
+#/score/close
+
+#########################
+# Display the event number
+# during the run
+#
+/event/printEventNumber 1000
+
+#########################
+# Start of the run
+#
+# If secondary particles dose & fluence are needed
+/analysis/secondary true
+/analysis/computeLet
+
+# Default material is water liquid
+#/changePhantom/material G4_AIR
+ 
+/run/printProgress  100
+/run/beamOn         10000
+
+
+#/score/dumpQuantityToFile nFluxTop cellFlux nFluxTop.dat
+#/score/dumpQuantityToFile gFluxTop cellFlux gFluxTop.dat
+
+#/score/dumpQuantityToFile nFluxLeft cellFlux nFluxLeft.dat
+#/score/dumpQuantityToFile gFluxLeft cellFlux gFluxLeft.dat

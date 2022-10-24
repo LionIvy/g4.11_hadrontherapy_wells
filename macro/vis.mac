@@ -1,0 +1,29 @@
+/vis/open OGLI 600x600-0+0
+
+	# Disable auto refresh and quieten vis messages whilst scene and
+	# trajectories are established:
+/vis/viewer/set/autoRefresh false
+	#/vis/verbose errors
+
+/vis/drawVolume
+/vis/viewer/set/viewpointThetaPhi 30 140 deg
+	#/vis/viewer/zoom 1
+	#/vis/viewer/pan -10  0 cm
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+
+/vis/modeling/trajectories/create/drawByParticleID PID
+/vis/modeling/trajectories/PID/set gamma green
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/PID/set neutron yellow
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/PID/set e- red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/PID/set e+ red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/PID/set proton blue
+/vis/scene/notifyHandlers scene-0

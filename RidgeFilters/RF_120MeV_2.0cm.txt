@@ -1,0 +1,15 @@
+TransvLength_mm  64.0
+ModulesNumber    16
+StairsNumber     9
+GapBetweenModules_mm 1.35
+ElementParametrs:
+#	Width_mm   Heigth_mm
+Elem1	     0.55	 2.4
+Elem2	     0.4	 4.4
+Elem3	     0.3	 6.4
+Elem4	     0.3	 8.4
+Elem5	     0.2	10.4
+Elem6	     0.2	12.5
+Elem7	     0.2	14.5
+Elem8	     0.2	16.6
+Elem9	     0.3	18.7

@@ -1,0 +1,11 @@
+0		| HadrontherapyWedge();
+0		| HadrontherapyGraphiteCollimator();
+0		| HadrontherapyFirstScatterer();
+1		| HadrontherapyWall();
+1		| HadrontherapyContouredScatterer();
+0		| Collimator;
+1		| HadrontherapyRidgeFilter();
+0		| Collimator;
+0		| Bolus;
+0		| BeamDumpSet;
+0		| BeamDumpSetOn;
