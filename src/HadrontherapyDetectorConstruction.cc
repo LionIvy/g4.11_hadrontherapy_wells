@@ -211,7 +211,7 @@ void HadrontherapyDetectorConstruction::ConstructDetector()
     // Visualisation attributes of the detector
     skyBlue = new G4VisAttributes( G4Colour(135/255. , 206/255. ,  235/255., 0.2 ));
     skyBlue -> SetVisibility(true);
-    skyBlue -> SetForceCloud(true);
+    skyBlue -> SetForceWireframe(true);
     //skyBlue -> SetForceWireframe(true);
     detectorLogicalVolume -> SetVisAttributes(skyBlue);
 
@@ -843,121 +843,116 @@ void HadrontherapyDetectorConstruction::AddEggHolder(G4double depth){
     G4RotationMatrix* baseRotation4 = new G4RotationMatrix();
     baseRotation4->rotateZ(270*deg);
 
-
-    G4Box* solid_egg_holderzone = new G4Box("EggHolderZone_solid", 0.5* egg_holderzone_size_X, 0.5* egg_holderzone_size_Y, 0.5* egg_holderzone_size_Z);
-    G4LogicalVolume* logic_egg_holderzone = new G4LogicalVolume(solid_egg_holderzone, detectorMaterial, "EggHolderZone_logicBox");
-    G4PVPlacement* phys_egg_holderzone  = new G4PVPlacement(baseRotation0 , G4ThreeVector(0, 0*cm, 0),
-                                          logic_egg_holderzone,"EggHolderZone_physBox", detectorLogicalVolume, false, 0, true);
-    logic_egg_holderzone->SetVisAttributes(whiteWire);
+    if(true){
 
 
-
-    G4Box* solid_egg_holderBody = new G4Box("EggHolderQuarter_solid", 0.5* egg_holderQuarter_size_X, 0.5* egg_holderQuarter_size_Y, 0.5* egg_holderQuarter_size_Z);
-    G4Tubs* solid_egg_holderHole = new G4Tubs("HolderHole", 0, egg_holderQuarter_R, egg_holderQuarter_size_Z, 0, 360*deg);
-    G4SubtractionSolid* solid_egg_holderQuarter = new G4SubtractionSolid("EggHolderQuarter_solid", solid_egg_holderBody, solid_egg_holderHole);
-
-
-    G4LogicalVolume* logic_egg_holderQuarter = new G4LogicalVolume(solid_egg_holderQuarter, G4NistManager::Instance()->FindOrBuildMaterial("G4_PLEXIGLASS", false), "EggHolderQuarter_logicBox");
-
-
-    G4Tubs* solid_smallHole = new G4Tubs("smallHole", 0, 5*mm, solid_egg_holderBody->GetZHalfLength(), 90*deg, 90*deg);
-    G4LogicalVolume* logic_smallHole = new G4LogicalVolume(solid_smallHole, detectorMaterial, "EggHolderQuarter_logicBox");
-    G4PVPlacement* phys_smallHole  = new G4PVPlacement(0 , G4ThreeVector(+ solid_egg_holderBody->GetXHalfLength(),
-                                                                         - solid_egg_holderBody->GetYHalfLength(),
-                                                                         0),
-                                                       logic_smallHole,"EggHolderSmallHole_physBox", logic_egg_holderQuarter, false, 0, true);
-    logic_smallHole -> SetVisAttributes(invisibleColor);
-
-    G4PVPlacement* phys_egg_holderQuarter;
-
-
-    G4double depth_0 = -0.5*cm;
-    G4double depth_1 = +0.6*cm;
-    G4double depth_of_Egg = 0*cm;
-
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation2 ,
-                                                G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_0),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
-
-    AddEgg(G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_of_Egg),
-           logic_egg_holderzone);
-
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation2 ,
-                                                G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_1),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
-
-
-    phys_egg_holderQuarter  = new G4PVPlacement(0 ,
-                                                G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_0),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
-    AddEgg(G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_of_Egg),
-           logic_egg_holderzone);
-    phys_egg_holderQuarter  = new G4PVPlacement(0 ,
-                                                G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_1),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+        G4Box* solid_egg_holderzone = new G4Box("EggHolderZone_solid", 0.5* egg_holderzone_size_X, 0.5* egg_holderzone_size_Y, 0.5* egg_holderzone_size_Z);
+        G4LogicalVolume* logic_egg_holderzone = new G4LogicalVolume(solid_egg_holderzone, detectorMaterial, "EggHolderZone_logicBox");
+        G4PVPlacement* phys_egg_holderzone  = new G4PVPlacement(baseRotation0 , G4ThreeVector(0, 0*cm, 0),
+                                                                logic_egg_holderzone,"EggHolderZone_physBox", detectorLogicalVolume, false, 0, true);
+        logic_egg_holderzone->SetVisAttributes(whiteWire);
 
 
 
-
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation4 ,
-                                                G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_0),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
-    AddEgg(G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_of_Egg),
-           logic_egg_holderzone);
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation4 ,
-                                                G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_1),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+        G4Box* solid_egg_holderBody = new G4Box("EggHolderQuarter_solid", 0.5* egg_holderQuarter_size_X, 0.5* egg_holderQuarter_size_Y, 0.5* egg_holderQuarter_size_Z);
+        G4Tubs* solid_egg_holderHole = new G4Tubs("HolderHole", 0, egg_holderQuarter_R, egg_holderQuarter_size_Z, 0, 360*deg);
+        G4SubtractionSolid* solid_egg_holderQuarter = new G4SubtractionSolid("EggHolderQuarter_solid", solid_egg_holderBody, solid_egg_holderHole);
 
 
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation3 ,
-                                                G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_0),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
-
-    AddEgg(G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_of_Egg),
-           logic_egg_holderzone);
-
-    phys_egg_holderQuarter  = new G4PVPlacement(baseRotation3 ,
-                                                G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_1),
-                                                logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+        G4LogicalVolume* logic_egg_holderQuarter = new G4LogicalVolume(solid_egg_holderQuarter, G4NistManager::Instance()->FindOrBuildMaterial("G4_PLEXIGLASS", false), "EggHolderQuarter_logicBox");
 
 
-    logic_egg_holderQuarter->SetVisAttributes(yellowSolid);
+        G4Tubs* solid_smallHole = new G4Tubs("smallHole", 0, 5*mm, solid_egg_holderBody->GetZHalfLength(), 90*deg, 90*deg);
+        G4LogicalVolume* logic_smallHole = new G4LogicalVolume(solid_smallHole, detectorMaterial, "EggHolderQuarter_logicBox");
+        G4PVPlacement* phys_smallHole  = new G4PVPlacement(0 , G4ThreeVector(+ solid_egg_holderBody->GetXHalfLength(),
+                                                                             - solid_egg_holderBody->GetYHalfLength(),
+                                                                             0),
+                                                           logic_smallHole,"EggHolderSmallHole_physBox", logic_egg_holderQuarter, false, 0, true);
+        logic_smallHole -> SetVisAttributes(invisibleColor);
+
+        G4PVPlacement* phys_egg_holderQuarter;
 
 
-//    G4Sphere* eggAlbumenBottom = new G4Sphere("solidEggAlbumen",
-//                                    0, 12*mm,
-//                                    0*deg, 180*deg,
-//                                    0, 180*deg);
-//    G4LogicalVolume* logicEggAlbumenBottom = new G4LogicalVolume(eggAlbumenBottom, detectorMaterial, "logicEggAlbumenBottom");
-//    G4PVPlacement* physEggAlbumenBottom = new G4PVPlacement(0, G4ThreeVector(0,0,0),
-//                                             logicEggAlbumenBottom, "physEggAlbumenBottom", detectorLogicalVolume, false,0,true);
+        G4double depth_0 = -0.5*cm;
+        G4double depth_1 = +0.6*cm;
+        G4double depth_of_Egg = 0*cm;
 
-//    logicEggAlbumenBottom->SetVisAttributes(yellowWire);
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation2 ,
+                                                    G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_0),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
 
-//    G4Sphere*  bubble_sphere = new G4Sphere("solidEggAlbumen",
-//                                             0, 6*mm,
-//                                             180*deg, 180*deg,
-//                                             0, 180*deg);
-//    G4IntersectionSolid* bubble_body = new G4IntersectionSolid("solidAir", eggAlbumenBottom, bubble_sphere, 0, G4ThreeVector(0,8*mm, 0));
-//    G4LogicalVolume* logicBubble = new G4LogicalVolume(bubble_body, detectorMaterial, "logicBubble");
-//    G4PVPlacement* physBubble = new G4PVPlacement(0, G4ThreeVector(0,8*mm,0),
-//                                                  logicBubble, "physBubble", logicEggAlbumenBottom, false,0,true);
+        AddEgg(G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_of_Egg),
+               logic_egg_holderzone);
 
-//    logicBubble -> SetVisAttributes(yellowSolid);
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation2 ,
+                                                    G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_1),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
 
-    //    G4Sphere*  bubble_sphere = new G4Sphere("solidEggAlbumen",
-    //                                            0, 5*cm,
-    //                                            0, 180*deg,
-    //                                            0, 360*deg);
-    //    G4SubtractionSolid* bubble_body = new G4SubtractionSolid("solidAir",eggAlbumenBottom, bubble_sphere, 0, G4ThreeVector(0,0,6*cm));
-    //    G4LogicalVolume* logicBubble = new G4LogicalVolume(bubble_body, airNist, "logicBubble");
-    //    G4PVPlacement* physBubble = new G4PVPlacement(0, G4ThreeVector(0,0,-6*cm),
-    //                                        logicBubble, "physBubble", logicEggAlbumenBottom, false,0,true);
 
-    //    G4VisAttributes* invisibleColor= new G4VisAttributes( G4Colour(0., 0., 0., 0.2));
-    //    invisibleColor -> SetVisibility(true);
-    //    invisibleColor -> SetForceSolid(true);
-    //    logicBubble -> SetVisAttributes(invisibleColor);
+        phys_egg_holderQuarter  = new G4PVPlacement(0 ,
+                                                    G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_0),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+        AddEgg(G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_of_Egg),
+               logic_egg_holderzone);
+        phys_egg_holderQuarter  = new G4PVPlacement(0 ,
+                                                    G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, + 0.5*egg_holderQuarter_size_X, depth_1),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+
+
+
+
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation4 ,
+                                                    G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_0),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+        AddEgg(G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_of_Egg),
+               logic_egg_holderzone);
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation4 ,
+                                                    G4ThreeVector(- 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_1),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+
+
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation3 ,
+                                                    G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_0),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+
+        AddEgg(G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_of_Egg),
+               logic_egg_holderzone);
+
+        phys_egg_holderQuarter  = new G4PVPlacement(baseRotation3 ,
+                                                    G4ThreeVector(+ 0.5*egg_holderQuarter_size_Y, - 0.5*egg_holderQuarter_size_X, depth_1),
+                                                    logic_egg_holderQuarter,"EggHolderQuarter_physBox", logic_egg_holderzone, false, 0, true);
+
+
+        logic_egg_holderQuarter->SetVisAttributes(yellowSolid);
+
+    }
+    else{
+        G4Sphere* eggAlbumenBottom = new G4Sphere("solidEggAlbumen",
+                                                  0, 12*mm,
+                                                  0*deg, 180*deg,
+                                                  0, 180*deg);
+        G4LogicalVolume* logicEggAlbumenBottom = new G4LogicalVolume(eggAlbumenBottom, detectorMaterial, "logicEggAlbumenBottom");
+        G4PVPlacement* physEggAlbumenBottom = new G4PVPlacement(0, G4ThreeVector(0,0,0),
+                                                                logicEggAlbumenBottom, "physEggAlbumenBottom", detectorLogicalVolume, false,0,true);
+
+        logicEggAlbumenBottom->SetVisAttributes(yellowWire);
+
+        G4Sphere*  bubble_sphere = new G4Sphere("solidEggAlbumen",
+                                                0, 15*mm,
+                                                0*deg, 360*deg,
+                                                0, 180*deg);
+        G4IntersectionSolid* bubble_body = new G4IntersectionSolid("solidAir", eggAlbumenBottom, bubble_sphere,
+                                                                   0,
+                                                                   G4ThreeVector(0,23*mm, 0));
+        G4LogicalVolume* logicBubble = new G4LogicalVolume(bubble_body, detectorMaterial, "logicBubble");
+        G4PVPlacement* physBubble = new G4PVPlacement(0,
+                                                      G4ThreeVector(0,0*mm,0),
+                                                      logicBubble, "physBubble", logicEggAlbumenBottom, false,0,true);
+
+        logicBubble -> SetVisAttributes(yellowSolid);
+    }
+
+
 }
 
 void HadrontherapyDetectorConstruction::AddEgg(G4ThreeVector pos, G4LogicalVolume* motherLV){
@@ -1067,33 +1062,33 @@ void HadrontherapyDetectorConstruction::AddEgg(G4ThreeVector pos, G4LogicalVolum
                                         logicYolkBottom, "physYolk", logicEggAlbumenBottom, false,0,true);
 
 
-    G4VisAttributes* blueCloud = new G4VisAttributes(G4Color(0,0,1));
-    blueCloud->SetForceCloud();
+    G4VisAttributes* whiteNet = new G4VisAttributes(G4Color(1,1,1, 0.2));
+    whiteNet->SetForceWireframe();
+    G4VisAttributes* whiteCloud = new G4VisAttributes(G4Color(1,1,1, 0.2));
+    whiteCloud->SetForceCloud();
     G4VisAttributes* yellowCloud = new G4VisAttributes(G4Color(1,1,0));
     yellowCloud->SetForceCloud();
 
-    G4VisAttributes* redCloud = new G4VisAttributes(G4Color(1,0,0));
-    redCloud->SetForceCloud();
+    G4VisAttributes* blueCloud = new G4VisAttributes(G4Color(0,0,1,0.2));
+    blueCloud->SetForceCloud();
 
-    logicEggShellTop->SetVisAttributes(redCloud);
-    logicEggAlbumenTop->SetVisAttributes(blueCloud);
-    logicEggShellBottom->SetVisAttributes(redCloud);
-    logicEggAlbumenBottom->SetVisAttributes(blueCloud);
+    logicEggShellTop->SetVisAttributes(whiteNet);
+    logicEggAlbumenTop->SetVisAttributes(whiteCloud);
+    logicEggShellBottom->SetVisAttributes(whiteNet);
+    logicEggAlbumenBottom->SetVisAttributes(whiteCloud);
     logicYolkTop->SetVisAttributes(yellowCloud);
     logicYolkBottom->SetVisAttributes(yellowCloud);
 
-
-//    G4Sphere*  bubble_sphere = new G4Sphere("solidEggAlbumen",
-//                                            0, 5*cm,
-//                                            0, 180*deg,
-//                                            0, 360*deg);
-//    G4SubtractionSolid* bubble_body = new G4SubtractionSolid("solidAir",eggAlbumenBottom, bubble_sphere, 0, G4ThreeVector(0,0,6*cm));
-//    G4LogicalVolume* logicBubble = new G4LogicalVolume(bubble_body, airNist, "logicBubble");
-//    G4PVPlacement* physBubble = new G4PVPlacement(0, G4ThreeVector(0,0,-6*cm),
-//                                        logicBubble, "physBubble", logicEggAlbumenBottom, false,0,true);
-
-//    G4VisAttributes* invisibleColor= new G4VisAttributes( G4Colour(0., 0., 0., 0.2));
-//    invisibleColor -> SetVisibility(true);
-//    invisibleColor -> SetForceSolid(true);
-//    logicBubble -> SetVisAttributes(invisibleColor);
+    G4Sphere*  bubble_sphere = new G4Sphere("solidEggAlbumen",
+                                            0, 15*mm,
+                                            0*deg, 360*deg,
+                                            0, 180*deg);
+    G4IntersectionSolid* bubble_body = new G4IntersectionSolid("solidAir", eggAlbumenBottom, bubble_sphere,
+                                                               0,
+                                                               G4ThreeVector(0,25*mm, 0));
+    G4LogicalVolume* logicBubble = new G4LogicalVolume(bubble_body, airNist, "logicBubble");
+    G4PVPlacement* physBubble = new G4PVPlacement(0,
+                                                  G4ThreeVector(0,0*mm,0),
+                                                  logicBubble, "physBubble", logicEggAlbumenBottom, false,0,true);
+    logicBubble -> SetVisAttributes(blueCloud);
 }
