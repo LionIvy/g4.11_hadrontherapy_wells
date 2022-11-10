@@ -18,6 +18,10 @@ class HadrontherapyDetectorConstruction;
 class PhaseSpaceDetector;
 class PhaseSpaceDataset;
 
+class PhaseSpaceDetectorConstruction;
+
+
+
 //class HadrontherapyCellDetectorConstruction;
 //class HT_PetriDishDetectorConstruction;
 
@@ -115,6 +119,7 @@ private:
     G4VPhysicalVolume* physicalTreatmentRoom;
     HadrontherapyDetectorConstruction* hadrontherapyDetectorConstruction;
     PhaseSpaceDetector* phsp_det;
+    PhaseSpaceDetectorConstruction* PhaseSpaceDetector;
     PhaseSpaceDataset* PhaseSpace_data_collection;
   //  HadrontherapyCellDetectorConstruction* hadrontherapyCellDetectorConstruction;
   //  HT_PetriDishDetectorConstruction* petriDishDetectorConstruction;

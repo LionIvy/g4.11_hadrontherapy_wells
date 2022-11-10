@@ -1,5 +1,5 @@
-#ifndef PHASESPASEDETECTORCONSTRUCTION_HH
-#define PHASESPASEDETECTORCONSTRUCTION_HH
+#ifndef PhaseSpaceDetectorConstruction_HH
+#define PhaseSpaceDetectorConstruction_HH
 
 #include "G4VUserDetectorConstruction.hh"
 
@@ -21,13 +21,13 @@ class G4PVPlacement;
 class PhaseSpaceDetector_SD;
 //class HadrontherapyMatrix;
 
-class PhaseSpaseDetectorConstruction: public G4VUserDetectorConstruction
+class PhaseSpaceDetectorConstruction: public G4VUserDetectorConstruction
 {
 public:
 
-    PhaseSpaseDetectorConstruction(G4VPhysicalVolume*, G4double zPosition);
+    PhaseSpaceDetectorConstruction(G4VPhysicalVolume*, G4double zPosition);
 
-    ~PhaseSpaseDetectorConstruction();
+    ~PhaseSpaceDetectorConstruction();
 
     virtual G4VPhysicalVolume* Construct();
     virtual void ConstructSD();
@@ -35,7 +35,7 @@ public:
     G4String sensitiveDetectorName = "PhaseSpaceLV";
 
 public:
-    static PhaseSpaseDetectorConstruction* GetInstance();
+    static PhaseSpaceDetectorConstruction* GetInstance();
 //    void InitializeDetectorROGeometry(HadrontherapyDetectorROGeometry*,
 //                                      G4ThreeVector detectorToWorldPosition);
     G4VPhysicalVolume* motherPhys;
@@ -63,7 +63,7 @@ public:
 
 
 private:
-    static PhaseSpaseDetectorConstruction* instance;
+    static PhaseSpaceDetectorConstruction* instance;
 
     G4VisAttributes* skyBlue;
     G4VisAttributes* red;
@@ -109,4 +109,4 @@ private:
 
 
 };
-#endif // PHASESPASEDETECTORCONSTRUCTION_HH
+#endif // PhaseSpaceDetectorConstruction_HH

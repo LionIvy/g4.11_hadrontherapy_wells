@@ -38,6 +38,7 @@
 //#include "PhaseSpaceDetector.hh"
 #include "PhaseSpace_SD.hh"
 #include "PhaseSpaceDataset.hh"
+#include "PhaseSpaceDetectorConstruction.hh"
 
 
 
@@ -639,7 +640,9 @@ void INRPassiveProtonBeamLine::ConstructINRProtonBeamLine()
     {Collimator(FinalCollimatorBoxX,FinalCollimatorBoxY,FinalCollimatorBoxZ,FinalCollimatorBoxR,FinalCollimatorPosX, Collimator2Material );}
 
 
-    construct_PhaseSpace_detector();
+    //construct_PhaseSpace_detector();
+    if (!PhaseSpaceDetector) PhaseSpaceDetector = new PhaseSpaceDetectorConstruction(physiAr1, Area1XShift + 30*cm);
+
 
 
     // Retrieve the region by its name

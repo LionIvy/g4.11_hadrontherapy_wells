@@ -1,4 +1,4 @@
-#include "PhaseSpaseDetectorConstruction.hh"
+#include "PhaseSpaceDetectorConstruction.hh"
 
 
 #include "G4GeometryManager.hh"
@@ -7,13 +7,13 @@
 #include "PhaseSpace_SD.hh"
 
 
-PhaseSpaseDetectorConstruction* PhaseSpaseDetectorConstruction::instance = 0;
+PhaseSpaceDetectorConstruction* PhaseSpaceDetectorConstruction::instance = 0;
 
-PhaseSpaseDetectorConstruction::PhaseSpaseDetectorConstruction(G4VPhysicalVolume* physicalTreatmentRoom, G4double zPosition = 0)
+PhaseSpaceDetectorConstruction::PhaseSpaceDetectorConstruction(G4VPhysicalVolume* physicalTreatmentRoom, G4double zPosition = 0)
 : motherPhys(physicalTreatmentRoom),    // pointer to WORLD volume
   detectorSD(0)
 {
-    /* NOTE! that the PhaseSpaseDetectorConstruction class
+    /* NOTE! that the PhaseSpaceDetectorConstruction class
      * does NOT inherit from G4VUserDetectorConstruction G4 class
      * So the Construct() mandatory virtual method is inside another geometric class
      * like the passiveProtonBeamLIne, ...
@@ -75,17 +75,17 @@ PhaseSpaseDetectorConstruction::PhaseSpaseDetectorConstruction(G4VPhysicalVolume
 }
 
 
-PhaseSpaseDetectorConstruction::~PhaseSpaseDetectorConstruction(){
+PhaseSpaceDetectorConstruction::~PhaseSpaceDetectorConstruction(){
 
 }
 
-PhaseSpaseDetectorConstruction* PhaseSpaseDetectorConstruction::GetInstance()
+PhaseSpaceDetectorConstruction* PhaseSpaceDetectorConstruction::GetInstance()
 {
     return instance;
 }
 
 
-G4VPhysicalVolume* PhaseSpaseDetectorConstruction::Construct(){
+G4VPhysicalVolume* PhaseSpaceDetectorConstruction::Construct(){
 
     solid_phSpDet = new G4Box("solid_phSpDet",
                               phSp_HX,
@@ -158,7 +158,7 @@ G4VPhysicalVolume* PhaseSpaseDetectorConstruction::Construct(){
 
 }
 
-void PhaseSpaseDetectorConstruction::ConstructSD(){
+void PhaseSpaceDetectorConstruction::ConstructSD(){
 
     PhaseSpace_SD *sensDet = new PhaseSpace_SD(sensitiveDetectorName);
     phaseSpace_ScoringVolume ->SetSensitiveDetector(sensDet);
