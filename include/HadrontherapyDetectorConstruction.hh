@@ -49,13 +49,14 @@ class HadrontherapyDetectorConstruction
 {
 public:
     
-    HadrontherapyDetectorConstruction(G4VPhysicalVolume*, G4bool includePlasticWells = false);
+    HadrontherapyDetectorConstruction(G4VPhysicalVolume*, G4bool includePlasticWells = false, G4bool includeEggHolder = false);
     
     ~HadrontherapyDetectorConstruction();
     
 public:
 
     G4bool plasticWellsIncluded = false;
+    G4bool eggHolderIncluded = false;
     static HadrontherapyDetectorConstruction* GetInstance();
     void InitializeDetectorROGeometry(HadrontherapyDetectorROGeometry*,
                                       G4ThreeVector detectorToWorldPosition);
@@ -171,6 +172,9 @@ public:
     void AddPlateZone(G4double position);
     void AddBubble();
     
+    void AddEggHolder(G4double depth);
+    void AddEgg(G4ThreeVector pos, G4LogicalVolume* motherLV);
+
 private:
     static HadrontherapyDetectorConstruction* instance;
     HadrontherapyDetectorMessenger* detectorMessenger;

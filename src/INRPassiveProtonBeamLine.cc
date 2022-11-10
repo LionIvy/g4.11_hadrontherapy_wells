@@ -89,8 +89,9 @@ G4VPhysicalVolume* INRPassiveProtonBeamLine::Construct()
 
     //***************************** PW ***************************************
     if (!hadrontherapyDetectorConstruction){
-    G4bool plasticWells = true;
-    hadrontherapyDetectorConstruction = new HadrontherapyDetectorConstruction(physicalTreatmentRoom, plasticWells);
+    G4bool plasticWells = false;
+    G4bool eggHolder = true;
+    hadrontherapyDetectorConstruction = new HadrontherapyDetectorConstruction(physicalTreatmentRoom, plasticWells, eggHolder);
     hadrontherapyDetectorConstruction->InitializeDetectorROGeometry(RO,hadrontherapyDetectorConstruction->GetDetectorToWorldPosition());
     }
 
