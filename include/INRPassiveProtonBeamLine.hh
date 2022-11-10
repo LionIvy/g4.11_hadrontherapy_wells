@@ -15,10 +15,9 @@
 
 class G4VPhysicalVolume;
 class HadrontherapyDetectorConstruction;
-class PhaseSpaceDetector;
-class PhaseSpaceDataset;
-
-class PhaseSpaceDetectorConstruction;
+//class PhaseSpaceDetector;
+//class PhaseSpaceDataset;
+//class PhaseSpaceDetectorConstruction;
 
 
 
@@ -118,9 +117,9 @@ private:
     INRPassiveProtonBeamLineMessenger* passiveMessenger;
     G4VPhysicalVolume* physicalTreatmentRoom;
     HadrontherapyDetectorConstruction* hadrontherapyDetectorConstruction;
-    PhaseSpaceDetector* phsp_det;
-    PhaseSpaceDetectorConstruction* PhaseSpaceDetector;
-    PhaseSpaceDataset* PhaseSpace_data_collection;
+//    PhaseSpaceDetector* phsp_det;
+//    PhaseSpaceDetectorConstruction* PhaseSpaceDetector;
+//    PhaseSpaceDataset* PhaseSpace_data_collection;
   //  HadrontherapyCellDetectorConstruction* hadrontherapyCellDetectorConstruction;
   //  HT_PetriDishDetectorConstruction* petriDishDetectorConstruction;
 

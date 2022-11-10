@@ -36,9 +36,9 @@
 #include "HadrontherapyModulator.hh"
 
 //#include "PhaseSpaceDetector.hh"
-#include "PhaseSpace_SD.hh"
-#include "PhaseSpaceDataset.hh"
-#include "PhaseSpaceDetectorConstruction.hh"
+//#include "PhaseSpace_SD.hh"
+//#include "PhaseSpaceDataset.hh"
+//#include "PhaseSpaceDetectorConstruction.hh"
 
 
 
@@ -49,7 +49,7 @@ INRPassiveProtonBeamLine::INRPassiveProtonBeamLine():
     RidgeFilter(),
     physicalTreatmentRoom(),     // физ объем мира
     hadrontherapyDetectorConstruction(),      // конструкция детектора
-    phsp_det(),
+ //   phsp_det(),
     firstScatteringFoil(),
     logicConcreteWall(),
     physiGraphiteCollimatorBox(),
@@ -641,7 +641,7 @@ void INRPassiveProtonBeamLine::ConstructINRProtonBeamLine()
 
 
     //construct_PhaseSpace_detector();
-    if (!PhaseSpaceDetector) PhaseSpaceDetector = new PhaseSpaceDetectorConstruction(physiAr1, Area1XShift + 30*cm);
+//    if (!PhaseSpaceDetector) PhaseSpaceDetector = new PhaseSpaceDetectorConstruction(physiAr1, Area1XShift + 30*cm);
 
 
 
@@ -1209,10 +1209,10 @@ void INRPassiveProtonBeamLine::construct_PhaseSpace_detector(){
     logic_voxel -> SetVisAttributes(solid_gray);
     phaseSpace_ScoringVolume = logic_voxel;
 
-    G4cout << "INR_beamline" << G4endl;
-    PhaseSpace_data_collection = PhaseSpaceDataset::getInstance(Nx, -phSp_HX, phSp_HX,
-                                                                Ny, -phSp_HY, phSp_HZ,
-                                                                100, 150 *MeV, 160* MeV);
+//    G4cout << "INR_beamline" << G4endl;
+//    PhaseSpace_data_collection = PhaseSpaceDataset::getInstance(Nx, -phSp_HX, phSp_HX,
+//                                                                Ny, -phSp_HY, phSp_HZ,
+//                                                                100, 150 *MeV, 160* MeV);
 
 
 }
