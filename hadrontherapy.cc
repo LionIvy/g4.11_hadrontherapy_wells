@@ -28,8 +28,6 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 
-#include "PhaseSpaceDataset.hh"
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 int main(int argc ,char ** argv)
 {
@@ -161,11 +159,7 @@ int main(int argc ,char ** argv)
             let -> StoreLetAscii(); // Store it
         }
 
-    G4cout << "main" << G4endl;
-//    if(PhaseSpaceDataset* phsp_data = PhaseSpaceDataset::getInstance()){
-//        //phsp_data
-//        G4cout << "dataset found";
-//    }
+
     
     delete geometryMessenger;
     delete geometryController;

@@ -30,12 +30,7 @@
 #include "HadrontherapyDetectorConstruction.hh"
 #include "HadrontherapyInteractionParameters.hh"
 #include "HadrontherapyDetectorROGeometry.hh"
-#include "HadrontherapyTIFPAPassiveProtonBeamLine.hh"
 #include "INRPassiveProtonBeamLine.hh"
-#include "PassiveProtonBeamLine.hh"
-#include "BESTPassiveProtonBeamLine.hh"
-#include "PassiveCarbonBeamLine.hh"
-#include "LaserDrivenBeamLine.hh"
 #include "G4RunManager.hh"
 #include "G4VUserParallelWorld.hh"
 #include "G4ThreeVector.hh"
@@ -54,24 +49,7 @@ void HadrontherapyGeometryController::SetGeometry(G4String name)
     G4cout <<"Activating geometry " << name << G4endl;
     if(name == "default")
     {
-      registerGeometry(new PassiveProtonBeamLine());
-    }
-    else if(name == "Carbon")
-    {
-      registerGeometry(new PassiveCarbonBeamLine());
-    }
-    else if(name == "LaserDriven")
-    {
-      registerGeometry(new LaserDrivenBeamLine());
-    }
-    
-    else if(name == "TrentoLine")
-    {
-        registerGeometry(new TrentoPassiveProtonBeamLine());
-    }
-    else if(name == "BESTBeamLine")
-    {
-        registerGeometry(new BESTPassiveProtonBeamLine());
+      registerGeometry(new INRPassiveProtonBeamLine());
     }
     else if(name == "INRBeamLine")
     {

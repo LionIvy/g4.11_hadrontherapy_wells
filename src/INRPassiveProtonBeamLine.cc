@@ -32,15 +32,6 @@
 #include "G4RegionStore.hh"
 #include "G4ProductionCuts.hh"
 
-// под удаление
-#include "HadrontherapyModulator.hh"
-
-//#include "PhaseSpaceDetector.hh"
-//#include "PhaseSpace_SD.hh"
-//#include "PhaseSpaceDataset.hh"
-//#include "PhaseSpaceDetectorConstruction.hh"
-
-
 
 //G4bool PassiveProtonBeamLine::doCalculation = false;
 /////////////////////////////////////////////////////////////////////////////
@@ -89,7 +80,7 @@ G4VPhysicalVolume* INRPassiveProtonBeamLine::Construct()
 
     //***************************** PW ***************************************
     if (!hadrontherapyDetectorConstruction){
-    G4bool plasticWells = false;
+    G4bool plasticWells = false;//true;
     G4bool eggHolder = true;
     hadrontherapyDetectorConstruction = new HadrontherapyDetectorConstruction(physicalTreatmentRoom, plasticWells, eggHolder);
     hadrontherapyDetectorConstruction->InitializeDetectorROGeometry(RO,hadrontherapyDetectorConstruction->GetDetectorToWorldPosition());

@@ -50,12 +50,12 @@ HadrontherapyRunAction::HadrontherapyRunAction()
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
     accumulableManager->RegisterAccumulable(&fRBEAccumulable);
 
-    auto analysisManager = G4AnalysisManager::Instance();
+//    auto analysisManager = G4AnalysisManager::Instance();
 
 
-    // Create directories
-    analysisManager->SetVerboseLevel(1);
-    analysisManager->SetNtupleMerging(true);
+//    // Create directories
+//    analysisManager->SetVerboseLevel(1);
+//    analysisManager->SetNtupleMerging(true);
 
 
 
@@ -64,7 +64,7 @@ HadrontherapyRunAction::HadrontherapyRunAction()
 /////////////////////////////////////////////////////////////////////////////
 HadrontherapyRunAction::~HadrontherapyRunAction()
 {
-    delete G4AnalysisManager::Instance();
+    //delete G4AnalysisManager::Instance();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -86,21 +86,21 @@ void HadrontherapyRunAction::BeginOfRunAction(const G4Run* aRun)
     hadronic = 0;
 
 
-    auto analysisManager = G4AnalysisManager::Instance();
-    // Creating ntuple
-    analysisManager -> OpenFile("PhaseSpace.root");
-    analysisManager ->CreateNtuple("Hits", "HitsD");
-        analysisManager -> CreateNtupleIColumn("fEvent");
-        analysisManager -> CreateNtupleIColumn("detector_CopyNo");
-        analysisManager -> CreateNtupleIColumn("X");
-        analysisManager -> CreateNtupleIColumn("Y");
-        analysisManager -> CreateNtupleDColumn("energy");
-        analysisManager -> CreateNtupleDColumn("momentum_dirX");
-        analysisManager -> CreateNtupleDColumn("momentum_dirY");
-        analysisManager -> CreateNtupleDColumn("momentum_dirZ");
-    analysisManager -> FinishNtuple(0);
+//    auto analysisManager = G4AnalysisManager::Instance();
+//    // Creating ntuple
+//    analysisManager -> OpenFile("PhaseSpace.root");
+//    analysisManager ->CreateNtuple("Hits", "HitsD");
+//        analysisManager -> CreateNtupleIColumn("fEvent");
+//        analysisManager -> CreateNtupleIColumn("detector_CopyNo");
+//        analysisManager -> CreateNtupleIColumn("X");
+//        analysisManager -> CreateNtupleIColumn("Y");
+//        analysisManager -> CreateNtupleDColumn("energy");
+//        analysisManager -> CreateNtupleDColumn("momentum_dirX");
+//        analysisManager -> CreateNtupleDColumn("momentum_dirY");
+//        analysisManager -> CreateNtupleDColumn("momentum_dirZ");
+//    analysisManager -> FinishNtuple(0);
 
-    analysisManager -> CreateH1("ProtonEnergy", "ProtonEnergy",  100, 150, 160);
+//    analysisManager -> CreateH1("ProtonEnergy", "ProtonEnergy",  100, 150, 160);
 
 
 
@@ -139,10 +139,10 @@ void HadrontherapyRunAction::EndOfRunAction(const G4Run*)
         rbe->StoreRBE();
     }
     
-    if (analysisManager->IsOpenFile()) {
-      analysisManager->Write();
-      analysisManager->CloseFile();
-    }
+//    if (analysisManager->IsOpenFile()) {
+//      analysisManager->Write();
+//      analysisManager->CloseFile();
+//    }
 }
 /////////////////////////////////////////////////////////////////////////////
 void HadrontherapyRunAction::AddEMProcess()

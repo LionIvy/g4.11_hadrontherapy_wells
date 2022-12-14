@@ -53,9 +53,8 @@
 #include "HadrontherapyDetectorSD.hh"
 #include "HadrontherapyMatrix.hh"
 #include "HadrontherapyLet.hh"
-#include "PassiveProtonBeamLine.hh"
-#include "BESTPassiveProtonBeamLine.hh"
 #include "HadrontherapyMatrix.hh"
+#include "INRPassiveProtonBeamLine.hh"
 
 #include "HadrontherapyRBE.hh"
 #include "G4SystemOfUnits.hh"
@@ -439,7 +438,7 @@ void HadrontherapyDetectorConstruction::UpdateGeometry()
     sizeOfVoxelAlongY = ( detectorSizeY / numberOfVoxelsAlongY );
     numberOfVoxelsAlongZ = G4lrint(detectorSizeZ / sizeOfVoxelAlongZ);
     sizeOfVoxelAlongZ = ( detectorSizeZ / numberOfVoxelsAlongZ );
-    PassiveProtonBeamLine *ppbl= (PassiveProtonBeamLine*)
+    INRPassiveProtonBeamLine *ppbl= (INRPassiveProtonBeamLine*)
     
     G4RunManager::GetRunManager()->GetUserDetectorConstruction();
     

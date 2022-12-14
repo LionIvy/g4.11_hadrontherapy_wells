@@ -11,7 +11,6 @@
 #include "G4LogicalVolume.hh"
 #include <fstream>
 
-#include "PhaseSpaceDataset.hh"
 
 class G4VPhysicalVolume;
 class HadrontherapyDetectorConstruction;
