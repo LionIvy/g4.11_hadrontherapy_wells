@@ -149,6 +149,7 @@ int main(int argc ,char ** argv)
     {
         // pMatrix -> TotalEnergyDeposit();
         pMatrix -> StoreDoseFluenceAscii();
+        pMatrix -> StoreSquaredDoseAscii("Dose_squared.csv");
         
     }
     

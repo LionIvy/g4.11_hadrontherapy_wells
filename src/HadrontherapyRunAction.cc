@@ -111,7 +111,7 @@ void HadrontherapyRunAction::BeginOfRunAction(const G4Run* aRun)
 /////////////////////////////////////////////////////////////////////////////
 void HadrontherapyRunAction::EndOfRunAction(const G4Run*)
 {
-    auto analysisManager = G4AnalysisManager::Instance();
+ //   auto analysisManager = G4AnalysisManager::Instance();
 
     G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
     accumulableManager->Merge();

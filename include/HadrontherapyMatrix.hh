@@ -139,6 +139,7 @@ public:
    
   // Store single matrix data to filename 
   void StoreMatrix(G4String file, void* data,size_t psize);
+  //void StoreMatrix_squared(G4String file, void* data,size_t psize);
   // Store all fluence data to filenames
   void StoreFluenceData();
   // Store all dose data to filenames
@@ -146,6 +147,7 @@ public:
 
   // Store all data (except the total dose) to ONE filename
   void StoreDoseFluenceAscii(G4String filename = "");
+  void StoreSquaredDoseAscii(G4String file = "");
   
 
     
@@ -153,6 +155,7 @@ public:
   // Get a unique index from  a three dimensional one 
 
   G4double * GetMatrix(){return matrix;}
+  G4double * GetMatrix_squared(){return matrix_squared;}
 
   G4int GetNvoxel(){return numberOfVoxelAlongX*numberOfVoxelAlongY*numberOfVoxelAlongZ;}
   // Total number of voxels read only access  
@@ -168,6 +171,7 @@ private:
   G4double massOfVoxel;
 
   G4double* matrix;
+  G4double* matrix_squared;
   G4int* hitTrack;
   G4String stdFile, filename;
   std::ofstream ofs;
